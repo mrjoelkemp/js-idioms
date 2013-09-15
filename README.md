@@ -14,7 +14,7 @@ if (foo = doSomething()) {
 }
 ```
 
-The quick explanation of how this works is that the function call `doSomething()` executes and 
+The way this works is that the function call `doSomething()` executes and 
 its returned value gets stored in `foo`. 
 The value of `foo` is then evaluated for truthiness. 
 
@@ -47,7 +47,7 @@ Alternatively, you can one-line it to be more concise:
 if (callback) callback();
 ```
 
-However, the expression-based defaulting technique is a quite clever use of the short-circuiting nature of boolean operators.
+However, the expression-based defaulting technique uses the short-circuiting nature of boolean operators.
 
 Here it is again:
 
@@ -69,9 +69,9 @@ foo || (foo = {});
 ```
 
 Similar to the previous idiom, this one also takes advantage of short circuiting.
-If `foo` doesn’t exist (or is some falsy value), then the second clause assigns the empty object to foo.
+If `foo` doesn’t exist (or is some falsy value), then the second clause assigns the empty object to `foo`.
 
-It’s really another way of saying:
+It’s another way of saying:
 
 ```javascript
 foo = foo || {};
