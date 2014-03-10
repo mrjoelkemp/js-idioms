@@ -1,7 +1,7 @@
 JavaScript Idioms
 =========
 
-A collaborative collection of some interesting (not necessarily specific to) JavaScript idioms. 
+A collaborative collection of some interesting (not necessarily specific to) JavaScript idioms.
 
 Have another to share? Pull request it in. Hopefully, programmers of all skill levels can benefit.
 
@@ -14,9 +14,9 @@ if (foo = doSomething()) {
 }
 ```
 
-The way this works is that the function call `doSomething()` executes and 
-its returned value gets stored in `foo`. 
-The value of `foo` is then evaluated for truthiness. 
+The way this works is that the function call `doSomething()` executes and
+its returned value gets stored in `foo`.
+The value of `foo` is then evaluated for truthiness.
 
 This is really just a more concise way of saying:
 
@@ -55,11 +55,11 @@ Here it is again:
 callback && callback();
 ```
 
-If `callback` doesn’t exist, then the condition is immediately `false` 
-(since boolean and expects both clauses to be true – hence, the first clause must 
+If `callback` doesn’t exist, then the condition is immediately `false`
+(since boolean and expects both clauses to be true – hence, the first clause must
 be true to bother evaluating the second one) and moves on without evaluating the second clause.
 
-If `callback` does exist, however, then the second clause is 
+If `callback` does exist, however, then the second clause is
 evaluated – executing the callback function.
 
 ### Expression-based Variable Defaulting
@@ -92,7 +92,7 @@ var a = [];
 a[a.length] = 'foo';
 ```
 
-This works because `a.length` evaluates to 0 initially (it's an empty array) and 
+This works because `a.length` evaluates to 0 initially (it's an empty array) and
 so ‘foo’ gets stored/appended in `a[0]`. Another iteration of this idea could be:
 
 ```javascript
@@ -111,3 +111,22 @@ a.push('foo');
 ```
 
 
+### Conditionals with Binary NOT
+
+*Taken from visionmedia/superagent*
+
+```javascript
+ this.url += ~this.url.indexOf('?')
+      ? '&' + query
+      : '?' + query;
+```
+
+The NOT Binary operator converts a given integer, N, into the -(N+1) value.
+For example, the ~-1 gives us -(-1+1), which is -0, of just 0.
+
+The code above checks if there's a `?` in the url string. If there is **no**
+question mark, `indexOf` returns -1, the ~ of which is 0 (falsy in this
+ternary operation) which means that the question mark will be added.
+
+If the question mark was found, then the binary NOT of it (wherever it is
+within the string) would be non-zero, adding the ampersand to the query string.
