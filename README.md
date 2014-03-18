@@ -130,3 +130,22 @@ ternary operation) which means that the question mark will be added.
 
 If the question mark was found, then the binary NOT of it (wherever it is
 within the string) would be non-zero, adding the ampersand to the query string.
+
+### Removing duplicates from an array
+
+```javascript
+myarray.filter(function(elem, idx) {
+    return myarray.indexOf(elem) === idx;
+});
+```
+
+The gist of this is that a duplicate will have a previous copy that occurs earlier in the array. As such,
+that copy will have an index not equal to that of the current element.
+
+Example: `[1, 2, 1]`
+
+For the first 1, the `indexOf` the first occurrence of 1 is the same as the index of the current 1 – zero.
+For the second 1 (the copy), the `indexOf` the first occurrence of 1 is 0, not 2 (the current index of the duplicate).
+Since the indices are not equal, the duplicate is not included in the filtered set.
+
+It's still an O(n^2) algorithm, but pretty succint.
